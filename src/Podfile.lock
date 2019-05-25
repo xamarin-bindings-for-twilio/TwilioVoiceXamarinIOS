@@ -1,5 +1,5 @@
 PODS:
-  - TwilioVoice (3.0.0)
+  - TwilioVoice (3.1.0)
 
 DEPENDENCIES:
   - TwilioVoice

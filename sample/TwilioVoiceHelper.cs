@@ -214,6 +214,8 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
 
         private void NotificationDelegateOnCancelledCallInviteReceivedEvent(object sender, TVOCancelledCallInvite e)
         {
+            // We've already accepted the invite.
+            if (Call != null) return;
             CancelledCallInviteReceived?.Invoke(this, e);
         }
 

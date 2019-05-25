@@ -3,4 +3,4 @@ install! 'cocoapods', :integrate_targets => false
 target 'ObjectiveSharpieIntegration' do
   use_frameworks!
 end
-pod 'TwilioVoice', '~> 3.0'
+pod 'TwilioVoice', '~> 3.1'

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-URL="https://media.twiliocdn.com/sdk/ios/voice/releases/3.0.0/twilio-voice-ios-static-3.0.0.tar.bz2"
-ZIP_NAME="twilio-voice-ios-static-3.0.0.tar.bz2"
+URL="https://media.twiliocdn.com/sdk/ios/voice/releases/3.1.0/twilio-voice-ios-static-3.1.0.tar.bz2"
+ZIP_NAME="twilio-voice-ios-static-3.1.0.tar.bz2"
 LIB_DIR="twilio-voice-ios"
 
 cd "$PARENT_PATH"
