@@ -320,6 +320,8 @@ namespace Twilio.Voice.iOS
     {
     }
 
+    interface ITVOAudioDevice { }
+
     // @interface TVOBaseTrackStats : NSObject
     [BaseType(typeof(NSObject))]
     [DisableDefaultCtor]
@@ -870,7 +872,7 @@ namespace Twilio.Voice.iOS
         // @property (nonatomic, strong, class) id<TVOAudioDevice> _Nonnull audioDevice;
         [Static]
         [Export("audioDevice", ArgumentSemantic.Strong)]
-        TVOAudioDevice AudioDevice { get; set; }
+        ITVOAudioDevice AudioDevice { get; set; }
 
         // +(NSString * _Nonnull)sdkVersion;
         [Static]
