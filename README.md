@@ -28,7 +28,7 @@ Add --registrar:static as additional mtouch arguments on iOS Build dialog for yo
 
 Members of the community have contributed to improving and update bindings:
 
-- none
+- Rob Harwood
 
 If you have a bugfix or an update you'd like to add, please open an issue. 
 All pull requests should be opened against the `master` branch.
