@@ -50,9 +50,6 @@
     <Compile Include="libTwilioVoice.linkwith.cs">
       <DependentUpon>libTwilioVoice.a</DependentUpon>
     </Compile>
-    <Compile Include="libboringssl.linkwith.cs">
-      <DependentUpon>libboringssl.a</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
@@ -62,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingNativeLibrary Include="libTwilioVoice.a" />
-    <ObjcBindingNativeLibrary Include="libboringssl.a" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
   <Import Project="packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
