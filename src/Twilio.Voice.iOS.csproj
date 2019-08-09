@@ -28,10 +28,10 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Twilio.Voice.iOS.XamarinBinding</PackageId>
-    <PackageVersion>3.1.0.1</PackageVersion>
+    <PackageVersion>4.2.1.0</PackageVersion>
     <Authors>twilio dkornev</Authors>
     <Owners>twilio</Owners>
-    <PackageProjectUrl>https://github.com/dkornev/TwilioXamarinBindings</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/dkornev/TwilioVoiceXamarinIOS</PackageProjectUrl>
     <Summary>Twilio Voice iOS SDK binding for Xamarin iOS</Summary>
     <Title>Twilio Voice iOS SDK</Title>
     <Description>With Twilio, you can quickly make and receive voice calls in your application.</Description>
