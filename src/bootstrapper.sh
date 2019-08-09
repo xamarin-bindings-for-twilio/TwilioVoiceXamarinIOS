@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
 PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-URL="https://media.twiliocdn.com/sdk/ios/voice/releases/3.1.0/twilio-voice-ios-static-3.1.0.tar.bz2"
-ZIP_NAME="twilio-voice-ios-static-3.1.0.tar.bz2"
-LIB_DIR="twilio-voice-ios"
+URL="https://github.com/twilio/twilio-voice-ios/releases/download/4.2.1/libTwilioVoice.zip"
+ZIP_NAME="libTwilioVoice.zip"
+LIB_DIR="libTwilioVoice"
 
 cd "$PARENT_PATH"
+mkdir $LIB_DIR
+cd $PARENT_PATH/$LIB_DIR
 curl -L $URL > $ZIP_NAME
 tar -xf $ZIP_NAME
-mv $LIB_DIR/lib/libboringssl.a libboringssl.a
-mv $LIB_DIR/lib/libTwilioVoice.a libTwilioVoice.a
+mv lib/libTwilioVoice.a ../libTwilioVoice.a
+cd "$PARENT_PATH"
 rm -rf $LIB_DIR
-rm $ZIP_NAME 

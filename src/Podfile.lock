@@ -1,5 +1,5 @@
 PODS:
-  - TwilioVoice (3.1.0)
+  - TwilioVoice (4.2.1)
 
 DEPENDENCIES:
   - TwilioVoice
@@ -9,8 +9,8 @@ SPEC REPOS:
     - TwilioVoice
 
 SPEC CHECKSUMS:
-  TwilioVoice: 87deaa95d493f33fc33d37c32e2b4a3128ca5f25
+  TwilioVoice: 96ba7d59a05bdf1fa90d0f61ec653330df15248e
 
-PODFILE CHECKSUM: 2254eaaf1138a1013dd9f4fa683f5534fe27fc10
+PODFILE CHECKSUM: 688232c3bf18a9f2f6b1c9dac3d153347d050643
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.3
