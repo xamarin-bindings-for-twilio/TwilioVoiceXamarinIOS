@@ -6,8 +6,10 @@ ZIP_NAME="libTwilioVoice.zip"
 LIB_DIR="libTwilioVoice"
 
 cd "$PARENT_PATH"
+mkdir $LIB_DIR
+cd $PARENT_PATH/$LIB_DIR
 curl -L $URL > $ZIP_NAME
 tar -xf $ZIP_NAME
-mv $LIB_DIR/lib/libTwilioVoice.a libTwilioVoice.a
+mv lib/libTwilioVoice.a ../libTwilioVoice.a
+cd "$PARENT_PATH"
 rm -rf $LIB_DIR
-rm $ZIP_NAME 

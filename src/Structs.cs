@@ -27,7 +27,7 @@ namespace Twilio.Voice.iOS
 
 		// extern void TVOAudioDeviceExecuteWorkerBlock (TVOAudioDeviceContext _Nonnull context, TVOAudioDeviceWorkerBlock _Nonnull block);
 		[Export("TVOAudioDeviceExecuteWorkerBlock")]
-		static extern unsafe void TVOAudioDeviceExecuteWorkerBlock (void* context, TVOAudioDeviceWorkerBlock block);
+		static extern unsafe void TVOAudioDeviceExecuteWorkerBlock (void* context, IntPtr block);
 
 		// extern void TVOAudioSessionActivated (TVOAudioDeviceContext _Nonnull context);
 		[Export("TVOAudioSessionActivated")]
