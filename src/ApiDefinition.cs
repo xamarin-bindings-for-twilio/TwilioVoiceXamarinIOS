@@ -3,6 +3,7 @@ using AudioToolbox;
 using CoreFoundation;
 using Foundation;
 using ObjCRuntime;
+using TwilioVoice;
 
 namespace Twilio.Voice.iOS
 {
@@ -95,17 +96,13 @@ namespace Twilio.Voice.iOS
 		[NullAllowed, Export ("iceOptions", ArgumentSemantic.Strong)]
 		TVOIceOptions IceOptions { get; set; }
 
-		// @property (copy, nonatomic) NSString * _Nonnull region;
-		[Export ("region")]
-		string Region { get; set; }
-
 		// @property (copy, nonatomic) NSArray<TVOAudioCodec *> * _Nonnull preferredAudioCodecs;
 		[Export ("preferredAudioCodecs", ArgumentSemantic.Copy)]
 		TVOAudioCodec[] PreferredAudioCodecs { get; set; }
 
-		// @property (assign, nonatomic) BOOL enableInsights;
-		[Export ("enableInsights")]
-		bool EnableInsights { get; set; }
+		// @property (assign, nonatomic) BOOL enableDscp;
+		[Export ("enableDscp")]
+		bool EnableDscp { get; set; }
 	}
 
 	// @interface CallKit (TVOCallOptionsBuilder)
@@ -134,17 +131,13 @@ namespace Twilio.Voice.iOS
 		[NullAllowed, Export ("iceOptions", ArgumentSemantic.Strong)]
 		TVOIceOptions IceOptions { get; }
 
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull region;
-		[Export ("region")]
-		string Region { get; }
-
 		// @property (readonly, copy, nonatomic) NSArray<TVOAudioCodec *> * _Nonnull preferredAudioCodecs;
 		[Export ("preferredAudioCodecs", ArgumentSemantic.Copy)]
 		TVOAudioCodec[] PreferredAudioCodecs { get; }
 
-		// @property (readonly, assign, nonatomic) BOOL enableInsights;
-		[Export ("enableInsights")]
-		bool EnableInsights { get; }
+		// @property (readonly, assign, nonatomic) BOOL enableDscp;
+		[Export ("enableDscp")]
+		bool EnableDscp { get; }
 	}
 
 	// @interface CallKit (TVOCallOptions)
@@ -320,7 +313,7 @@ namespace Twilio.Voice.iOS
 	{
 	}
 
-    interface ITVOAudioDevice { }
+	interface ITVOAudioDevice { }
 
 	// @interface TVOBaseTrackStats : NSObject
 	[BaseType (typeof(NSObject))]
@@ -482,6 +475,17 @@ namespace Twilio.Voice.iOS
 		// @property (readonly, copy, nonatomic) NSUUID * _Nonnull uuid;
 		[Export ("uuid", ArgumentSemantic.Copy)]
 		NSUuid GetUuid ();
+	}
+
+	// @interface Utility (TVOCallInvite)
+	[Category]
+	[BaseType (typeof(TVOCallInvite))]
+	interface TVOCallInvite_Utility
+	{
+		// +(BOOL)isValid:(NSDictionary * _Nonnull)payload;
+		[Static]
+		[Export ("isValid:")]
+		bool IsValid (NSDictionary payload);
 	}
 
 	// @interface TVOCancelledCallInvite : NSObject
@@ -781,10 +785,10 @@ namespace Twilio.Voice.iOS
 		[Export ("callInviteReceived:")]
 		void CallInviteReceived (TVOCallInvite callInvite);
 
-		// @required -(void)cancelledCallInviteReceived:(TVOCancelledCallInvite * _Nonnull)cancelledCallInvite;
+		// @required -(void)cancelledCallInviteReceived:(TVOCancelledCallInvite * _Nonnull)cancelledCallInvite error:(NSError * _Nonnull)error;
 		[Abstract]
-		[Export ("cancelledCallInviteReceived:")]
-		void CancelledCallInviteReceived (TVOCancelledCallInvite cancelledCallInvite);
+		[Export ("cancelledCallInviteReceived:error:")]
+		void CancelledCallInviteReceived (TVOCancelledCallInvite cancelledCallInvite, NSError error);
 	}
 
 	// @interface TVOOpusCodec : TVOAudioCodec
@@ -870,6 +874,16 @@ namespace Twilio.Voice.iOS
 		[Export ("logLevel", ArgumentSemantic.Assign)]
 		TVOLogLevel LogLevel { get; set; }
 
+		// @property (getter = isInsightsEnabled, assign, nonatomic, class) BOOL insights;
+		[Static]
+		[Export ("insights")]
+		bool Insights { [Bind ("isInsightsEnabled")] get; set; }
+
+		// @property (copy, nonatomic, class) NSString * _Nonnull region;
+		[Static]
+		[Export ("region")]
+		string Region { get; set; }
+
 		// @property (nonatomic, strong, class) id<TVOAudioDevice> _Nonnull audioDevice;
 		[Static]
 		[Export ("audioDevice", ArgumentSemantic.Strong)]
@@ -901,10 +915,10 @@ namespace Twilio.Voice.iOS
 		[Export ("unregisterWithAccessToken:deviceToken:completion:")]
 		void UnregisterWithAccessToken (string accessToken, string deviceToken, [NullAllowed] Action<NSError> completion);
 
-		// +(BOOL)handleNotification:(NSDictionary * _Nonnull)payload delegate:(id<TVONotificationDelegate> _Nonnull)delegate;
+		// +(BOOL)handleNotification:(NSDictionary * _Nonnull)payload delegate:(id<TVONotificationDelegate> _Nonnull)delegate delegateQueue:(dispatch_queue_t _Nullable)delegateQueue;
 		[Static]
-		[Export ("handleNotification:delegate:")]
-		bool HandleNotification (NSDictionary payload, TVONotificationDelegate @delegate);
+		[Export ("handleNotification:delegate:delegateQueue:")]
+		bool HandleNotification (NSDictionary payload, TVONotificationDelegate @delegate, [NullAllowed] DispatchQueue delegateQueue);
 
 		// +(TVOCall * _Nonnull)connectWithAccessToken:(NSString * _Nonnull)accessToken delegate:(id<TVOCallDelegate> _Nonnull)delegate;
 		[Static]
