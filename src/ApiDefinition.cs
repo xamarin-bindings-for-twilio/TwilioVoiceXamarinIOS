@@ -3,7 +3,6 @@ using AudioToolbox;
 using CoreFoundation;
 using Foundation;
 using ObjCRuntime;
-using TwilioVoice;
 
 namespace Twilio.Voice.iOS
 {
