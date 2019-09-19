@@ -1,5 +1,5 @@
 PODS:
-  - TwilioVoice (4.2.1)
+  - TwilioVoice (5.0.0)
 
 DEPENDENCIES:
   - TwilioVoice
@@ -9,7 +9,7 @@ SPEC REPOS:
     - TwilioVoice
 
 SPEC CHECKSUMS:
-  TwilioVoice: 96ba7d59a05bdf1fa90d0f61ec653330df15248e
+  TwilioVoice: b75c5120e1e6a7402fd1f9f4917e8215ce8d7baf
 
 PODFILE CHECKSUM: 688232c3bf18a9f2f6b1c9dac3d153347d050643
 

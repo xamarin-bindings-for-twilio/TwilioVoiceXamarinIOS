@@ -28,7 +28,7 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageId>Twilio.Voice.iOS.XamarinBinding</PackageId>
-    <PackageVersion>4.2.1.0</PackageVersion>
+    <PackageVersion>5.0.0.0</PackageVersion>
     <Authors>twilio dkornev</Authors>
     <Owners>twilio</Owners>
     <PackageProjectUrl>https://github.com/dkornev/TwilioVoiceXamarinIOS</PackageProjectUrl>
