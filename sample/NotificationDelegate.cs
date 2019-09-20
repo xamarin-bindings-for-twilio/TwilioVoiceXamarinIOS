@@ -33,7 +33,7 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         #region Events
 
         public event EventHandler<TVOCallInvite> CallInviteReceivedEvent;
-        public event EventHandler<TVOCancelledCallInvite> CancelledCallInviteReceivedEvent;
+        public event EventHandler<(TVOCancelledCallInvite, NSError)> CancelledCallInviteReceivedEvent;
 
         #endregion
 
@@ -46,11 +46,11 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
             CallInviteReceivedEvent?.Invoke(this, callInvite);
         }
 
-        [Export("cancelledCallInviteReceived:")]
-        public override void CancelledCallInviteReceived(TVOCancelledCallInvite cancelledCallInvite)
+        [Export("cancelledCallInviteReceived:error:")]
+        public override void CancelledCallInviteReceived(TVOCancelledCallInvite cancelledCallInvite, NSError error)
         {
             LogHelper.Call(nameof(NotificationDelegate), nameof(CancelledCallInviteReceived));
-            CancelledCallInviteReceivedEvent?.Invoke(this, cancelledCallInvite);
+            CancelledCallInviteReceivedEvent?.Invoke(this, (cancelledCallInvite, error));
         }
 
         #endregion

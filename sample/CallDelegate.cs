@@ -48,14 +48,14 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
             CallDidConnectEvent?.Invoke(this, call);
         }
 
-        [Export("call:didFailToConnectWithError:")]
+        [Export("call:didDisconnectWithError:")]
         public override void CallDidDisconnectWithError(TVOCall call, NSError error)
         {
             LogHelper.Call(nameof(CallDelegate), nameof(CallDidDisconnectWithError));
             CallDidDisconnectWithErrorEvent?.Invoke(this, (call, error));
         }
 
-        [Export("call:didDisconnectWithError:")]
+        [Export("call:didFailToConnectWithError:")]
         public override void CallDidFailToConnectWithError(TVOCall call, NSError error)
         {
             LogHelper.Call(nameof(CallDelegate), nameof(CallDidFailToConnectWithError));

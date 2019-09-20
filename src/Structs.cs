@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using Foundation;
 using ObjCRuntime;
 
@@ -91,6 +92,7 @@ namespace Twilio.Voice.iOS
 		MalformedRequestError = 31100,
 		AuthorizationError = 31201,
 		RegistrationError = 31301,
+		UnsupportedCancelMessageError = 31302,
 		BadRequestError = 31400,
 		ForbiddenError = 31403,
 		NotFoundError = 31404,
