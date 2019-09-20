@@ -31,7 +31,7 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         public event EventHandler CallDidConnect;
         public event EventHandler<NSError> CallDidDisconnectWithError;
         public event EventHandler<NSError> CallDidFailToConnectWithError;
-        public event EventHandler<TVOCancelledCallInvite> CancelledCallInviteReceived;
+        public event EventHandler<(TVOCancelledCallInvite, NSError)> CancelledCallInviteReceived;
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         public TwilioVoiceHelper()
         {
 #if DEBUG
-            TwilioVoice.LogLevel = TVOLogLevel.Debug;
+            //TwilioVoice.LogLevel = TVOLogLevel.Debug;
 #endif
             _callDelegate = CallDelegate.Instance;
             _notificationDelegate = NotificationDelegate.Instance;
@@ -105,15 +105,14 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
 
         public void MakeCall(string accessToken, NSDictionary<NSString, NSString> parameters)
         {
+            LogHelper.Call(nameof(TwilioVoiceHelper), nameof(MakeCall), $"CallId: {parameters["callId"]}");
             if (accessToken == null || Call != null) return;
-            var connectionOptions = TVOConnectOptions.OptionsWithAccessToken(accessToken, (arg0) => { arg0.Params = parameters; });
+            var connectionOptions = TVOConnectOptions.OptionsWithAccessToken(accessToken,
+                (arg0) =>
+                {
+                    arg0.Params = parameters;
+                });
             Call = TwilioVoice.ConnectWithOptions(connectionOptions, _callDelegate);
-        }
-
-        public void HandleNotification(NSDictionary payload)
-        {
-            LogHelper.Call(nameof(TwilioVoiceHelper), nameof(HandleNotification));
-            TwilioVoice.HandleNotification(payload, _notificationDelegate);
         }
 
         public void RejectCallInvite()
@@ -212,13 +211,12 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
             CallInviteReceived?.Invoke(this, EventArgs.Empty);
         }
 
-        private void NotificationDelegateOnCancelledCallInviteReceivedEvent(object sender, TVOCancelledCallInvite e)
+        private void NotificationDelegateOnCancelledCallInviteReceivedEvent(object sender, (TVOCancelledCallInvite e, NSError error) invite)
         {
             // We've already accepted the invite.
             if (Call != null) return;
-            CancelledCallInviteReceived?.Invoke(this, e);
+            CancelledCallInviteReceived?.Invoke(this, (invite.e, invite.error));
         }
-
 
         #endregion
     }
