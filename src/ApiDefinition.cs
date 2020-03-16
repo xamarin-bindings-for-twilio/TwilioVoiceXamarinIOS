@@ -111,10 +111,10 @@ namespace Twilio.Voice.iOS
 	{
 		// @property (nonatomic, strong) NSUUID * _Nullable uuid;
 		[NullAllowed, Export ("uuid", ArgumentSemantic.Strong)]
-		NSUuid GetUuid ();
+		NSUuid GetUuid();
 
 		[NullAllowed, Export ("setUuid:", ArgumentSemantic.Strong)]
-		void SetUuid (NSUuid uuid);
+		void SetUuid(NSUuid uuid);
 	}
 
 	// @interface TVOCallOptions : NSObject
@@ -146,7 +146,7 @@ namespace Twilio.Voice.iOS
 	{
 		// @property (readonly, nonatomic, strong) NSUUID * _Nullable uuid;
 		[NullAllowed, Export ("uuid", ArgumentSemantic.Strong)]
-		NSUuid GetUuid ();
+		NSUuid GetUuid();
 	}
 
 	// @interface TVOAcceptOptionsBuilder : TVOCallOptionsBuilder
@@ -176,7 +176,7 @@ namespace Twilio.Voice.iOS
 	}
 
 	[Static]
-	//[Verify (ConstantsInterfaceAssociation)]
+	// [Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
 		// extern const uint32_t TVOAudioSampleRate8000;
@@ -205,11 +205,11 @@ namespace Twilio.Voice.iOS
 
 		// extern const size_t TVOAudioChannelsMono;
 		[Field ("TVOAudioChannelsMono", "__Internal")]
-		ulong TVOAudioChannelsMono { get; }
+		nuint TVOAudioChannelsMono { get; }
 
 		// extern const size_t TVOAudioChannelsStereo;
 		[Field ("TVOAudioChannelsStereo", "__Internal")]
-		ulong TVOAudioChannelsStereo { get; }
+		nuint TVOAudioChannelsStereo { get; }
 	}
 
 	// @interface TVOAudioFormat : NSObject
@@ -219,7 +219,7 @@ namespace Twilio.Voice.iOS
 	{
 		// @property (readonly, assign, nonatomic) size_t numberOfChannels;
 		[Export ("numberOfChannels")]
-		ulong NumberOfChannels { get; }
+		nuint NumberOfChannels { get; }
 
 		// @property (readonly, assign, nonatomic) uint32_t sampleRate;
 		[Export ("sampleRate")]
@@ -227,25 +227,25 @@ namespace Twilio.Voice.iOS
 
 		// @property (readonly, assign, nonatomic) size_t framesPerBuffer;
 		[Export ("framesPerBuffer")]
-		ulong FramesPerBuffer { get; }
+		nuint FramesPerBuffer { get; }
 
 		// -(instancetype _Nullable)initWithChannels:(size_t)channels sampleRate:(uint32_t)sampleRate framesPerBuffer:(size_t)framesPerBuffer;
 		[Export ("initWithChannels:sampleRate:framesPerBuffer:")]
-		IntPtr Constructor (nuint channels, uint sampleRate, ulong framesPerBuffer);
+		IntPtr Constructor (nuint channels, uint sampleRate, nuint framesPerBuffer);
 
 		// -(size_t)bufferSize;
 		[Export ("bufferSize")]
-		//[Verify (MethodToProperty)]
-		ulong BufferSize { get; }
+		// [Verify (MethodToProperty)]
+		nuint BufferSize { get; }
 
 		// -(AudioStreamBasicDescription)streamDescription;
 		[Export ("streamDescription")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		AudioStreamBasicDescription StreamDescription { get; }
 	}
 
 	// typedef void (^TVOAudioDeviceWorkerBlock)();
-	delegate void TVOAudioDeviceWorkerBlock ();
+	//delegate void TVOAudioDeviceWorkerBlock ();
 
 	// @protocol TVOAudioDeviceRenderer <NSObject>
 	[Protocol, Model]
@@ -255,13 +255,13 @@ namespace Twilio.Voice.iOS
 		// @required -(TVOAudioFormat * _Nullable)renderFormat;
 		[Abstract]
 		[NullAllowed, Export ("renderFormat")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		TVOAudioFormat RenderFormat { get; }
 
 		// @required -(BOOL)initializeRenderer;
 		[Abstract]
 		[Export ("initializeRenderer")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		bool InitializeRenderer { get; }
 
 		// @required -(BOOL)startRendering:(TVOAudioDeviceContext _Nonnull)context;
@@ -272,7 +272,7 @@ namespace Twilio.Voice.iOS
 		// @required -(BOOL)stopRendering;
 		[Abstract]
 		[Export ("stopRendering")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		bool StopRendering { get; }
 	}
 
@@ -284,13 +284,13 @@ namespace Twilio.Voice.iOS
 		// @required -(TVOAudioFormat * _Nullable)captureFormat;
 		[Abstract]
 		[NullAllowed, Export ("captureFormat")]
-		//Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		TVOAudioFormat CaptureFormat { get; }
 
 		// @required -(BOOL)initializeCapturer;
 		[Abstract]
 		[Export ("initializeCapturer")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		bool InitializeCapturer { get; }
 
 		// @required -(BOOL)startCapturing:(TVOAudioDeviceContext _Nonnull)context;
@@ -301,7 +301,7 @@ namespace Twilio.Voice.iOS
 		// @required -(BOOL)stopCapturing;
 		[Abstract]
 		[Export ("stopCapturing")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		bool StopCapturing { get; }
 	}
 
@@ -396,7 +396,7 @@ namespace Twilio.Voice.iOS
 	{
 		// @property (readonly, nonatomic, strong) NSUUID * _Nonnull uuid;
 		[Export ("uuid", ArgumentSemantic.Strong)]
-		NSUuid GetUuid ();
+		NSUuid GetUuid();
 	}
 
 	// @protocol TVOCallDelegate <NSObject>
@@ -473,7 +473,7 @@ namespace Twilio.Voice.iOS
 	{
 		// @property (readonly, copy, nonatomic) NSUUID * _Nonnull uuid;
 		[Export ("uuid", ArgumentSemantic.Copy)]
-		NSUuid GetUuid ();
+		NSUuid GetUuid();
 	}
 
 	// @interface Utility (TVOCallInvite)
@@ -573,8 +573,8 @@ namespace Twilio.Voice.iOS
 		TVODefaultAudioDevice AudioDeviceWithBlock (TVOAVAudioSessionConfigurationBlock block);
 	}
 
-	//[Static]
-	//[Verify (ConstantsInterfaceAssociation)]
+	// [Static]
+	// [Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
 		// extern NSString *const _Nonnull kTVOErrorDomain;

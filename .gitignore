@@ -329,8 +329,5 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 
-src/libTwilioVoice.a
-src/libboringssl.a
-src/Pods/
-src/build/
-src/Binding/
+src/Carthage/
+src/binding/

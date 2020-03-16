@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Voice.iOS", "Twilio.Voice.iOS.csproj", "{FDE9E264-0434-4E83-BE20-0C2C710F44F8}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Twilio.Voice.iOS", "Twilio.Voice.iOS.csproj", "{AA2271E0-376F-4EE7-99FA-E26CCBEA4A05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,9 +9,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDE9E264-0434-4E83-BE20-0C2C710F44F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDE9E264-0434-4E83-BE20-0C2C710F44F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDE9E264-0434-4E83-BE20-0C2C710F44F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDE9E264-0434-4E83-BE20-0C2C710F44F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA2271E0-376F-4EE7-99FA-E26CCBEA4A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA2271E0-376F-4EE7-99FA-E26CCBEA4A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA2271E0-376F-4EE7-99FA-E26CCBEA4A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA2271E0-376F-4EE7-99FA-E26CCBEA4A05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
