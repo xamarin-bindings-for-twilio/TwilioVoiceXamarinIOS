@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Twilio.Voice.iOS.XamarinBinding</id>
+    <version>5.2.1</version>
+    <authors>twilio dkornev</authors>
+    <owners>twilio</owners>
+    <projectUrl>https://github.com/dkornev/TwilioVoiceXamarinIOS</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <title>Twilio Voice iOS SDK</title>
+    <summary>Twilio Voice iOS SDK binding for Xamarin iOS</summary>
+    <description>With Twilio, you can quickly make and receive voice calls in your application.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags>twilio xamarin</tags>
+    <dependencies>
+      <!-- <dependency id="SampleDependency" version="1.0" /> -->
+    </dependencies>
+  </metadata>
+    <!-- Optional 'files' node -->
+    <files>
+        <!--iOS-->
+        <file src="bin/Release/Twilio.Voice.iOS.dll" target="lib/Xamarin.iOS10/Twilio.Voice.iOS.dll" />
+        <!--<file src="Twilio.Voice.iOS/bin/Release/Twilio.Voice.iOS.xml" target="lib/Xamarin.iOS10/Twilio.Voice.iOS.xml" />-->
+    </files>
+</package> 

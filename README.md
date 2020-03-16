@@ -4,12 +4,12 @@ Twilio Voice iOS SDK binding for Xamarin
 
 [![NuGet][nuget-img]][nuget-link]
 
-[nuget-img]: https://img.shields.io/badge/nuget-5.0.0-blue.svg
+[nuget-img]: https://img.shields.io/badge/nuget-5.2.1-blue.svg
 [nuget-link]: https://www.nuget.org/packages/Twilio.Voice.iOS.XamarinBinding
 
 ## How to Build
 
-### Twilio.Voice iOS 5.0.0 (September 19, 2019)
+### Twilio.Voice iOS 5.2.1 (March 11, 2020)
 ```
 sh bootstrapper.sh
 ```
@@ -28,6 +28,7 @@ Add --registrar:static as additional mtouch arguments on iOS Build dialog for yo
 
 Members of the community have contributed to improving and update bindings:
 
+- tuyen-vuduc (https://github.com/tuyen-vuduc)
 - Rob Harwood
 
 If you have a bugfix or an update you'd like to add, please open an issue. 
