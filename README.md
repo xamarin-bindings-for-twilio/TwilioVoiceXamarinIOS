@@ -15,6 +15,7 @@ sh bootstrapper.sh
 ```
 
 Add --registrar:static as additional mtouch arguments on iOS Build dialog for your iOS application
+Sometimes adding --registrar:static -cxx -gcc_flags -dead_strip flags is required.
 
 ## Sample
 
