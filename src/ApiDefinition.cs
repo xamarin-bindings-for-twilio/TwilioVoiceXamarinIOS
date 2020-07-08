@@ -102,6 +102,10 @@ namespace Twilio.Voice.iOS
 		// @property (assign, nonatomic) BOOL enableDscp;
 		[Export ("enableDscp")]
 		bool EnableDscp { get; set; }
+
+		// @property (assign, nonatomic) BOOL enableIceGatheringOnAnyAddressPorts;
+		[Export ("enableIceGatheringOnAnyAddressPorts")]
+		bool EnableIceGatheringOnAnyAddressPorts { get; set; }
 	}
 
 	// @interface CallKit (TVOCallOptionsBuilder)
@@ -137,6 +141,10 @@ namespace Twilio.Voice.iOS
 		// @property (readonly, assign, nonatomic) BOOL enableDscp;
 		[Export ("enableDscp")]
 		bool EnableDscp { get; }
+
+		// @property (readonly, assign, nonatomic) BOOL enableIceGatheringOnAnyAddressPorts;
+		[Export ("enableIceGatheringOnAnyAddressPorts")]
+		bool EnableIceGatheringOnAnyAddressPorts { get; }
 	}
 
 	// @interface CallKit (TVOCallOptions)
@@ -245,7 +253,7 @@ namespace Twilio.Voice.iOS
 	}
 
 	// typedef void (^TVOAudioDeviceWorkerBlock)();
-	//delegate void TVOAudioDeviceWorkerBlock ();
+	// delegate void TVOAudioDeviceWorkerBlock ();
 
 	// @protocol TVOAudioDeviceRenderer <NSObject>
 	[Protocol, Model]
@@ -372,6 +380,10 @@ namespace Twilio.Voice.iOS
 		[Export ("onHold")]
 		bool OnHold { [Bind ("isOnHold")] get; set; }
 
+		// @property (readonly, nonatomic, strong) NSSet * _Nonnull callQualityWarnings;
+		[Export ("callQualityWarnings", ArgumentSemantic.Strong)]
+		NSSet CallQualityWarnings { get; }
+
 		// -(void)disconnect;
 		[Export ("disconnect")]
 		void Disconnect ();
@@ -430,6 +442,10 @@ namespace Twilio.Voice.iOS
 		// @optional -(void)callDidReconnect:(TVOCall * _Nonnull)call;
 		[Export ("callDidReconnect:")]
 		void CallDidReconnect (TVOCall call);
+
+		// @optional -(void)call:(TVOCall * _Nonnull)call didReceiveQualityWarnings:(NSSet<NSNumber *> * _Nonnull)currentWarnings previousWarnings:(NSSet<NSNumber *> * _Nonnull)previousWarnings;
+		[Export ("call:didReceiveQualityWarnings:previousWarnings:")]
+		void CallDidReceiveQualityWarnings (TVOCall call, NSSet<NSNumber> currentWarnings, NSSet<NSNumber> previousWarnings);
 	}
 
 	// @interface TVOCallInvite : NSObject
@@ -835,6 +851,10 @@ namespace Twilio.Voice.iOS
 		// @property (readonly, assign, nonatomic) NSUInteger jitter;
 		[Export ("jitter")]
 		nuint Jitter { get; }
+
+		// @property (readonly, assign, nonatomic) double mos;
+		[Export ("mos")]
+		double Mos { get; }
 	}
 
 	// @interface TVOStatsReport : NSObject
@@ -878,7 +898,12 @@ namespace Twilio.Voice.iOS
 		[Export ("insights")]
 		bool Insights { [Bind ("isInsightsEnabled")] get; set; }
 
-		// @property (copy, nonatomic, class) NSString * _Nonnull region;
+		// @property (copy, nonatomic, class) NSString * _Nonnull edge;
+		[Static]
+		[Export ("edge")]
+		string Edge { get; set; }
+
+		// @property (copy, nonatomic, class) NSString * _Nonnull region __attribute__((deprecated("Use the `edge` property to specify the region and edge for the SDK to connect to the Twilio service.")));
 		[Static]
 		[Export ("region")]
 		string Region { get; set; }
@@ -891,7 +916,7 @@ namespace Twilio.Voice.iOS
 		// +(NSString * _Nonnull)sdkVersion;
 		[Static]
 		[Export ("sdkVersion")]
-		//[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		string SdkVersion { get; }
 
 		// +(void)setLogLevel:(TVOLogLevel)logLevel module:(TVOLogModule)module;
@@ -904,12 +929,22 @@ namespace Twilio.Voice.iOS
 		[Export ("logLevelForModule:")]
 		TVOLogLevel LogLevelForModule (TVOLogModule module);
 
-		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceTokenData:(NSData * _Nonnull)deviceTokenData completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("register(withAccessToken:deviceToken:completion:)")));
+		[Static]
+		[Export ("registerWithAccessToken:deviceTokenData:completion:")]
+		void RegisterWithAccessToken (string accessToken, NSData deviceTokenData, [NullAllowed] Action<NSError> completion);
+
+		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((deprecated("Use `[TwilioVoice registerWithAccessToken:deviceTokenData:completion:]` and provide a credentials.token instead.")));
 		[Static]
 		[Export ("registerWithAccessToken:deviceToken:completion:")]
 		void RegisterWithAccessToken (string accessToken, string deviceToken, [NullAllowed] Action<NSError> completion);
 
-		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion;
+		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceTokenData:(NSData * _Nonnull)deviceTokenData completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("unregister(withAccessToken:deviceToken:completion:)")));
+		[Static]
+		[Export ("unregisterWithAccessToken:deviceTokenData:completion:")]
+		void UnregisterWithAccessToken (string accessToken, NSData deviceTokenData, [NullAllowed] Action<NSError> completion);
+
+		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((deprecated("Use `[TwilioVoice unregisterWithAccessToken:deviceTokenData:completion:]` and provide a credentials.token instead.")));
 		[Static]
 		[Export ("unregisterWithAccessToken:deviceToken:completion:")]
 		void UnregisterWithAccessToken (string accessToken, string deviceToken, [NullAllowed] Action<NSError> completion);

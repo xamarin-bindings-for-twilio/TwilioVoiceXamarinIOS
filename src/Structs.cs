@@ -6,7 +6,7 @@ namespace Twilio.Voice.iOS
 {
 	// typedef void (^TVOAudioDeviceWorkerBlock)();
 	delegate void TVOAudioDeviceWorkerBlock();
-
+	
 	[Native]
 	public enum TVOIceTransportPolicy : ulong
 	{
@@ -78,6 +78,16 @@ namespace Twilio.Voice.iOS
 		ChoppyAudio,
 		NoisyCall,
 		Echo
+	}
+
+	[Native]
+	public enum TVOCallQualityWarning : ulong
+	{
+		HighRtt = 0,
+		HighJitter,
+		HighPacketsLostFraction,
+		LowMos,
+		ConstantAudioInputLevel
 	}
 
 	[Native]
