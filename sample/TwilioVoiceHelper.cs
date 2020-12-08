@@ -12,7 +12,7 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         private CallDelegate _callDelegate;
         private NotificationDelegate _notificationDelegate;
         private string _registeredAccessToken;
-        private string _registeredDeviceToken;
+        private NSData _registeredDeviceToken;
 
         #endregion
 
@@ -61,7 +61,7 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
 
         #region Methods
 
-        public void Register(string accessToken, string deviceToken)
+        public void Register(string accessToken, NSData deviceToken)
         {
             LogHelper.Call(nameof(TwilioVoiceHelper), nameof(Register), $"AccessToken: {accessToken}, DeviceToken: {deviceToken}");
             if (accessToken == null || deviceToken == null) return;

@@ -187,35 +187,35 @@ namespace Twilio.Voice.iOS
 	// [Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
-		// extern const uint32_t TVOAudioSampleRate8000;
+		// extern const uint32_t TVOAudioSampleRate8000 __attribute__((swift_name("AudioFormat.SampleRate8000")));
 		[Field ("TVOAudioSampleRate8000", "__Internal")]
 		uint TVOAudioSampleRate8000 { get; }
 
-		// extern const uint32_t TVOAudioSampleRate16000;
+		// extern const uint32_t TVOAudioSampleRate16000 __attribute__((swift_name("AudioFormat.SampleRate16000")));
 		[Field ("TVOAudioSampleRate16000", "__Internal")]
 		uint TVOAudioSampleRate16000 { get; }
 
-		// extern const uint32_t TVOAudioSampleRate24000;
+		// extern const uint32_t TVOAudioSampleRate24000 __attribute__((swift_name("AudioFormat.SampleRate24000")));
 		[Field ("TVOAudioSampleRate24000", "__Internal")]
 		uint TVOAudioSampleRate24000 { get; }
 
-		// extern const uint32_t TVOAudioSampleRate32000;
+		// extern const uint32_t TVOAudioSampleRate32000 __attribute__((swift_name("AudioFormat.SampleRate32000")));
 		[Field ("TVOAudioSampleRate32000", "__Internal")]
 		uint TVOAudioSampleRate32000 { get; }
 
-		// extern const uint32_t TVOAudioSampleRate44100;
+		// extern const uint32_t TVOAudioSampleRate44100 __attribute__((swift_name("AudioFormat.SampleRate44100")));
 		[Field ("TVOAudioSampleRate44100", "__Internal")]
 		uint TVOAudioSampleRate44100 { get; }
 
-		// extern const uint32_t TVOAudioSampleRate48000;
+		// extern const uint32_t TVOAudioSampleRate48000 __attribute__((swift_name("AudioFormat.SampleRate48000")));
 		[Field ("TVOAudioSampleRate48000", "__Internal")]
 		uint TVOAudioSampleRate48000 { get; }
 
-		// extern const size_t TVOAudioChannelsMono;
+		// extern const size_t TVOAudioChannelsMono __attribute__((swift_name("AudioFormat.ChannelsMono")));
 		[Field ("TVOAudioChannelsMono", "__Internal")]
 		nuint TVOAudioChannelsMono { get; }
 
-		// extern const size_t TVOAudioChannelsStereo;
+		// extern const size_t TVOAudioChannelsStereo __attribute__((swift_name("AudioFormat.ChannelsStereo")));
 		[Field ("TVOAudioChannelsStereo", "__Internal")]
 		nuint TVOAudioChannelsStereo { get; }
 	}
@@ -392,11 +392,11 @@ namespace Twilio.Voice.iOS
 		[Export ("sendDigits:")]
 		void SendDigits (string digits);
 
-		// -(void)getStatsWithBlock:(TVOCallGetStatsBlock _Nonnull)block;
+		// -(void)getStatsWithBlock:(TVOCallGetStatsBlock _Nonnull)block __attribute__((swift_name("getStats(_:)")));
 		[Export ("getStatsWithBlock:")]
 		void GetStatsWithBlock (TVOCallGetStatsBlock block);
 
-		// -(void)postFeedback:(TVOCallFeedbackScore)score issue:(TVOCallFeedbackIssue)issue;
+		// -(void)postFeedback:(TVOCallFeedbackScore)score issue:(TVOCallFeedbackIssue)issue __attribute__((swift_name("postFeedback(score:issue:)")));
 		[Export ("postFeedback:issue:")]
 		void PostFeedback (TVOCallFeedbackScore score, TVOCallFeedbackIssue issue);
 	}
@@ -406,8 +406,8 @@ namespace Twilio.Voice.iOS
 	[BaseType (typeof(TVOCall))]
 	interface TVOCall_CallKit
 	{
-		// @property (readonly, nonatomic, strong) NSUUID * _Nonnull uuid;
-		[Export ("uuid", ArgumentSemantic.Strong)]
+		// @property (readonly, nonatomic, strong) NSUUID * _Nullable uuid;
+		[NullAllowed, Export ("uuid", ArgumentSemantic.Strong)]
 		NSUuid GetUuid();
 	}
 
@@ -416,36 +416,46 @@ namespace Twilio.Voice.iOS
 	[BaseType (typeof(NSObject))]
 	interface TVOCallDelegate
 	{
-		// @required -(void)callDidConnect:(TVOCall * _Nonnull)call;
+		// @required -(void)callDidConnect:(TVOCall * _Nonnull)call __attribute__((swift_name("callDidConnect(call:)")));
 		[Abstract]
 		[Export ("callDidConnect:")]
 		void CallDidConnect (TVOCall call);
 
-		// @required -(void)call:(TVOCall * _Nonnull)call didFailToConnectWithError:(NSError * _Nonnull)error;
+		// @required -(void)call:(TVOCall * _Nonnull)call didFailToConnectWithError:(NSError * _Nonnull)error __attribute__((swift_name("callDidFailToConnect(call:error:)")));
 		[Abstract]
 		[Export ("call:didFailToConnectWithError:")]
 		void CallDidFailToConnectWithError (TVOCall call, NSError error);
 
-		// @required -(void)call:(TVOCall * _Nonnull)call didDisconnectWithError:(NSError * _Nullable)error;
+		// @required -(void)call:(TVOCall * _Nonnull)call didDisconnectWithError:(NSError * _Nullable)error __attribute__((swift_name("callDidDisconnect(call:error:)")));
 		[Abstract]
 		[Export ("call:didDisconnectWithError:")]
 		void CallDidDisconnectWithError (TVOCall call, [NullAllowed] NSError error);
 
-		// @optional -(void)callDidStartRinging:(TVOCall * _Nonnull)call;
+		// @optional -(void)callDidStartRinging:(TVOCall * _Nonnull)call __attribute__((swift_name("callDidStartRinging(call:)")));
 		[Export ("callDidStartRinging:")]
 		void CallDidStartRinging (TVOCall call);
 
-		// @optional -(void)call:(TVOCall * _Nonnull)call isReconnectingWithError:(NSError * _Nonnull)error;
+		// @optional -(void)call:(TVOCall * _Nonnull)call isReconnectingWithError:(NSError * _Nonnull)error __attribute__((swift_name("callIsReconnecting(call:error:)")));
 		[Export ("call:isReconnectingWithError:")]
 		void CallIsReconnectingWithError (TVOCall call, NSError error);
 
-		// @optional -(void)callDidReconnect:(TVOCall * _Nonnull)call;
+		// @optional -(void)callDidReconnect:(TVOCall * _Nonnull)call __attribute__((swift_name("callDidReconnect(call:)")));
 		[Export ("callDidReconnect:")]
 		void CallDidReconnect (TVOCall call);
 
-		// @optional -(void)call:(TVOCall * _Nonnull)call didReceiveQualityWarnings:(NSSet<NSNumber *> * _Nonnull)currentWarnings previousWarnings:(NSSet<NSNumber *> * _Nonnull)previousWarnings;
+		// @optional -(void)call:(TVOCall * _Nonnull)call didReceiveQualityWarnings:(NSSet<NSNumber *> * _Nonnull)currentWarnings previousWarnings:(NSSet<NSNumber *> * _Nonnull)previousWarnings __attribute__((swift_name("callDidReceiveQualityWarnings(call:currentWarnings:previousWarnings:)")));
 		[Export ("call:didReceiveQualityWarnings:previousWarnings:")]
 		void CallDidReceiveQualityWarnings (TVOCall call, NSSet<NSNumber> currentWarnings, NSSet<NSNumber> previousWarnings);
+	}
+
+	// @interface TVOCallerInfo : NSObject
+	[BaseType (typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface TVOCallerInfo
+	{
+		// @property (readonly, getter = isVerified, nonatomic, strong) NSNumber * _Nullable verified;
+		[NullAllowed, Export ("verified", ArgumentSemantic.Strong)]
+		NSNumber Verified { [Bind ("isVerified")] get; }
 	}
 
 	// @interface TVOCallInvite : NSObject
@@ -469,11 +479,15 @@ namespace Twilio.Voice.iOS
 		[NullAllowed, Export ("customParameters", ArgumentSemantic.Strong)]
 		NSDictionary<NSString, NSString> CustomParameters { get; }
 
+		// @property (readonly, nonatomic, strong) TVOCallerInfo * _Nonnull callerInfo;
+		[Export ("callerInfo", ArgumentSemantic.Strong)]
+		TVOCallerInfo CallerInfo { get; }
+
 		// -(TVOCall * _Nonnull)acceptWithDelegate:(id<TVOCallDelegate> _Nonnull)delegate;
 		[Export ("acceptWithDelegate:")]
 		TVOCall AcceptWithDelegate (TVOCallDelegate @delegate);
 
-		// -(TVOCall * _Nonnull)acceptWithOptions:(TVOAcceptOptions * _Nonnull)options delegate:(id<TVOCallDelegate> _Nonnull)delegate;
+		// -(TVOCall * _Nonnull)acceptWithOptions:(TVOAcceptOptions * _Nonnull)options delegate:(id<TVOCallDelegate> _Nonnull)delegate __attribute__((swift_name("accept(options:delegate:)")));
 		[Export ("acceptWithOptions:delegate:")]
 		TVOCall AcceptWithOptions (TVOAcceptOptions options, TVOCallDelegate @delegate);
 
@@ -593,7 +607,7 @@ namespace Twilio.Voice.iOS
 	// [Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
-		// extern NSString *const _Nonnull kTVOErrorDomain;
+		// extern NSString *const _Nonnull kTVOErrorDomain __attribute__((swift_name("TwilioVoice.ErrorDomain")));
 		[Field ("kTVOErrorDomain", "__Internal")]
 		NSString kTVOErrorDomain { get; }
 	}
@@ -795,12 +809,12 @@ namespace Twilio.Voice.iOS
 	[BaseType (typeof(NSObject))]
 	interface TVONotificationDelegate
 	{
-		// @required -(void)callInviteReceived:(TVOCallInvite * _Nonnull)callInvite;
+		// @required -(void)callInviteReceived:(TVOCallInvite * _Nonnull)callInvite __attribute__((swift_name("callInviteReceived(callInvite:)")));
 		[Abstract]
 		[Export ("callInviteReceived:")]
 		void CallInviteReceived (TVOCallInvite callInvite);
 
-		// @required -(void)cancelledCallInviteReceived:(TVOCancelledCallInvite * _Nonnull)cancelledCallInvite error:(NSError * _Nonnull)error;
+		// @required -(void)cancelledCallInviteReceived:(TVOCancelledCallInvite * _Nonnull)cancelledCallInvite error:(NSError * _Nonnull)error __attribute__((swift_name("cancelledCallInviteReceived(cancelledCallInvite:error:)")));
 		[Abstract]
 		[Export ("cancelledCallInviteReceived:error:")]
 		void CancelledCallInviteReceived (TVOCancelledCallInvite cancelledCallInvite, NSError error);
@@ -903,11 +917,6 @@ namespace Twilio.Voice.iOS
 		[Export ("edge")]
 		string Edge { get; set; }
 
-		// @property (copy, nonatomic, class) NSString * _Nonnull region __attribute__((deprecated("Use the `edge` property to specify the region and edge for the SDK to connect to the Twilio service.")));
-		[Static]
-		[Export ("region")]
-		string Region { get; set; }
-
 		// @property (nonatomic, strong, class) id<TVOAudioDevice> _Nonnull audioDevice;
 		[Static]
 		[Export ("audioDevice", ArgumentSemantic.Strong)]
@@ -929,37 +938,27 @@ namespace Twilio.Voice.iOS
 		[Export ("logLevelForModule:")]
 		TVOLogLevel LogLevelForModule (TVOLogModule module);
 
-		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceTokenData:(NSData * _Nonnull)deviceTokenData completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("register(withAccessToken:deviceToken:completion:)")));
-		[Static]
-		[Export ("registerWithAccessToken:deviceTokenData:completion:")]
-		void RegisterWithAccessToken (string accessToken, NSData deviceTokenData, [NullAllowed] Action<NSError> completion);
-
-		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((deprecated("Use `[TwilioVoice registerWithAccessToken:deviceTokenData:completion:]` and provide a credentials.token instead.")));
+		// +(void)registerWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSData * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("register(accessToken:deviceToken:completion:)")));
 		[Static]
 		[Export ("registerWithAccessToken:deviceToken:completion:")]
-		void RegisterWithAccessToken (string accessToken, string deviceToken, [NullAllowed] Action<NSError> completion);
+		void RegisterWithAccessToken (string accessToken, NSData deviceToken, [NullAllowed] Action<NSError> completion);
 
-		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceTokenData:(NSData * _Nonnull)deviceTokenData completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("unregister(withAccessToken:deviceToken:completion:)")));
-		[Static]
-		[Export ("unregisterWithAccessToken:deviceTokenData:completion:")]
-		void UnregisterWithAccessToken (string accessToken, NSData deviceTokenData, [NullAllowed] Action<NSError> completion);
-
-		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSString * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((deprecated("Use `[TwilioVoice unregisterWithAccessToken:deviceTokenData:completion:]` and provide a credentials.token instead.")));
+		// +(void)unregisterWithAccessToken:(NSString * _Nonnull)accessToken deviceToken:(NSData * _Nonnull)deviceToken completion:(void (^ _Nullable)(NSError * _Nullable))completion __attribute__((swift_name("unregister(accessToken:deviceToken:completion:)")));
 		[Static]
 		[Export ("unregisterWithAccessToken:deviceToken:completion:")]
-		void UnregisterWithAccessToken (string accessToken, string deviceToken, [NullAllowed] Action<NSError> completion);
+		void UnregisterWithAccessToken (string accessToken, NSData deviceToken, [NullAllowed] Action<NSError> completion);
 
 		// +(BOOL)handleNotification:(NSDictionary * _Nonnull)payload delegate:(id<TVONotificationDelegate> _Nonnull)delegate delegateQueue:(dispatch_queue_t _Nullable)delegateQueue;
 		[Static]
 		[Export ("handleNotification:delegate:delegateQueue:")]
 		bool HandleNotification (NSDictionary payload, TVONotificationDelegate @delegate, [NullAllowed] DispatchQueue delegateQueue);
 
-		// +(TVOCall * _Nonnull)connectWithAccessToken:(NSString * _Nonnull)accessToken delegate:(id<TVOCallDelegate> _Nonnull)delegate;
+		// +(TVOCall * _Nonnull)connectWithAccessToken:(NSString * _Nonnull)accessToken delegate:(id<TVOCallDelegate> _Nonnull)delegate __attribute__((swift_name("connect(accessToken:delegate:)")));
 		[Static]
 		[Export ("connectWithAccessToken:delegate:")]
 		TVOCall ConnectWithAccessToken (string accessToken, TVOCallDelegate @delegate);
 
-		// +(TVOCall * _Nonnull)connectWithOptions:(TVOConnectOptions * _Nonnull)options delegate:(id<TVOCallDelegate> _Nonnull)delegate;
+		// +(TVOCall * _Nonnull)connectWithOptions:(TVOConnectOptions * _Nonnull)options delegate:(id<TVOCallDelegate> _Nonnull)delegate __attribute__((swift_name("connect(options:delegate:)")));
 		[Static]
 		[Export ("connectWithOptions:delegate:")]
 		TVOCall ConnectWithOptions (TVOConnectOptions options, TVOCallDelegate @delegate);

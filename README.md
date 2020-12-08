@@ -4,12 +4,12 @@ Twilio Voice iOS SDK binding for Xamarin
 
 [![NuGet][nuget-img]][nuget-link]
 
-[nuget-img]: https://img.shields.io/badge/nuget-5.4.1-blue.svg
+[nuget-img]: https://img.shields.io/badge/nuget-6.0.2-blue.svg
 [nuget-link]: https://www.nuget.org/packages/Twilio.Voice.iOS.XamarinBinding
 
 ## How to Build
 
-### Twilio.Voice iOS 5.4.1 (June 25, 2020)
+### Twilio.Voice iOS 6.0.2 (November 4, 2020)
 ```
 sh bootstrapper.sh
 ```
