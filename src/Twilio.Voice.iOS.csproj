@@ -10,7 +10,7 @@
     <RootNamespace>Twilio.Voice.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>Twilio.Voice.iOS</AssemblyName>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
   </PropertyGroup>
   <PropertyGroup Condition="$(Configuration.Contains('Debug'))">
     <DebugSymbols>true</DebugSymbols>
@@ -39,9 +39,6 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -51,11 +48,15 @@
     <ObjcBindingCoreSource Include="Structs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="Carthage\Build\iOS\TwilioVoice.framework">
+    <NativeReference Include="Pods\TwilioVoice\TwilioVoice.xcframework">
       <Kind>Framework</Kind>
-      <IsCxx>True</IsCxx>
-      <ForceLoad>True</ForceLoad>
+      <SmartLink>False</SmartLink>
     </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Twilio.Voice.XamarinBinding.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
