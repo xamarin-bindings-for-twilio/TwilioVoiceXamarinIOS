@@ -607,7 +607,7 @@ namespace Twilio.Voice.iOS
 	// [Verify (ConstantsInterfaceAssociation)]
 	partial interface Constants
 	{
-		// extern NSString *const _Nonnull kTVOErrorDomain __attribute__((swift_name("TwilioVoice.ErrorDomain")));
+		// extern NSString *const _Nonnull kTVOErrorDomain __attribute__((swift_name("TwilioVoiceSDK.ErrorDomain")));
 		[Field ("kTVOErrorDomain", "__Internal")]
 		NSString kTVOErrorDomain { get; }
 	}
@@ -897,10 +897,10 @@ namespace Twilio.Voice.iOS
 		TVOIceCandidatePairStats[] IceCandidatePairStats { get; }
 	}
 
-	// @interface TwilioVoice : NSObject
+	// @interface TwilioVoiceSDK : NSObject
 	[BaseType (typeof(NSObject))]
 	[DisableDefaultCtor]
-	interface TwilioVoice
+	interface TwilioVoiceSDK
 	{
 		// @property (assign, nonatomic, class) TVOLogLevel logLevel;
 		[Static]
@@ -964,10 +964,10 @@ namespace Twilio.Voice.iOS
 		TVOCall ConnectWithOptions (TVOConnectOptions options, TVOCallDelegate @delegate);
 	}
 
-	// @interface CallKitIntegration (TwilioVoice)
+	// @interface CallKitIntegration (TwilioVoiceSDK)
 	[Category]
-	[BaseType (typeof(TwilioVoice))]
-	interface TwilioVoice_CallKitIntegration
+	[BaseType (typeof(TwilioVoiceSDK))]
+	interface TwilioVoiceSDK_CallKitIntegration
 	{
 	}
 }
