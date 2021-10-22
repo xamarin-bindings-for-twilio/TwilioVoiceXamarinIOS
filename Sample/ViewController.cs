@@ -19,7 +19,6 @@ namespace Sample
 
             twilioVoiceHelper = new TwilioVoiceHelper();
 
-            //twilioVoiceHelper.MakeCall("token", new NSDictionary<NSString, NSString>());
             twilioVoiceHelper.Register("token", NSData.FromString(""));
         }
 
