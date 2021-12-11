@@ -2,9 +2,10 @@
 
 Twilio Voice iOS SDK binding for Xamarin
 
-```
-NuGet package will be added soon!
-```
+[![NuGet][nuget-img]][nuget-link]
+
+[nuget-img]: https://img.shields.io/badge/nuget-6.3.0-blue.svg
+[nuget-link]: https://www.nuget.org/packages/Twilio.Voice.iOS.XamarinBinding
 
 ## How to Build
 
