@@ -1,9 +1,8 @@
 ﻿using System;
 using Foundation;
-using LSP.Mobile.Infrastructure.Common.Log;
 using Twilio.Voice.iOS;
 
-namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
+namespace Sample
 {
     internal class CallDelegate : TVOCallDelegate
     {
@@ -44,28 +43,28 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         [Export("callDidConnect:")]
         public override void CallDidConnect(TVOCall call)
         {
-            LogHelper.Call(nameof(CallDelegate), nameof(CallDidConnect));
+            Console.WriteLine(nameof(CallDelegate), nameof(CallDidConnect));
             CallDidConnectEvent?.Invoke(this, call);
         }
 
         [Export("call:didDisconnectWithError:")]
         public override void CallDidDisconnectWithError(TVOCall call, NSError error)
         {
-            LogHelper.Call(nameof(CallDelegate), nameof(CallDidDisconnectWithError));
+            Console.WriteLine(nameof(CallDelegate), nameof(CallDidDisconnectWithError));
             CallDidDisconnectWithErrorEvent?.Invoke(this, (call, error));
         }
 
         [Export("call:didFailToConnectWithError:")]
         public override void CallDidFailToConnectWithError(TVOCall call, NSError error)
         {
-            LogHelper.Call(nameof(CallDelegate), nameof(CallDidFailToConnectWithError));
+            Console.WriteLine(nameof(CallDelegate), nameof(CallDidFailToConnectWithError));
             CallDidFailToConnectWithErrorEvent?.Invoke(this, (call, error));
         }
 
         [Export("callDidStartRinging:")]
         public override void CallDidStartRinging(TVOCall call)
         {
-            LogHelper.Call(nameof(CallDelegate), nameof(CallDidStartRinging));
+            Console.WriteLine(nameof(CallDelegate), nameof(CallDidStartRinging));
             CallDidStartRingingEvent?.Invoke(this, call);
         }
         #endregion

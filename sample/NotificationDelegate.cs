@@ -1,9 +1,8 @@
 ﻿using System;
 using Foundation;
-using LSP.Mobile.Infrastructure.Common.Log;
 using Twilio.Voice.iOS;
 
-namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
+namespace Sample
 {
     public class NotificationDelegate : TVONotificationDelegate
     {
@@ -42,14 +41,14 @@ namespace LSP.Mobile.iOS.ViewController.Delegates.Voice
         [Export("callInviteReceived:")]
         public override void CallInviteReceived(TVOCallInvite callInvite)
         {
-            LogHelper.Call(nameof(NotificationDelegate), nameof(CallInviteReceived));
+            Console.WriteLine(nameof(NotificationDelegate), nameof(CallInviteReceived));
             CallInviteReceivedEvent?.Invoke(this, callInvite);
         }
 
         [Export("cancelledCallInviteReceived:error:")]
         public override void CancelledCallInviteReceived(TVOCancelledCallInvite cancelledCallInvite, NSError error)
         {
-            LogHelper.Call(nameof(NotificationDelegate), nameof(CancelledCallInviteReceived));
+            Console.WriteLine(nameof(NotificationDelegate), nameof(CancelledCallInviteReceived));
             CancelledCallInviteReceivedEvent?.Invoke(this, (cancelledCallInvite, error));
         }
 
